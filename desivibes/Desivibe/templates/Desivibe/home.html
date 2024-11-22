@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>{% block title %}{% endblock %}Desivibe</title>
+
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+
+        <style>
+            .chat-messages {
+                height: 400px;
+                overflow-y: auto;
+            }
+        </style>
+    </head>
+
+    <style>
+        /* New CSS styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0fff4;
+            background-image: url('https://i.pinimg.com/564x/84/f7/6e/84f76ec24b6f04d27214489725370080.jpg');
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            background-color: #2a9d8f;
+            color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            font-size: 18px;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-right: 20px;
+            transition: color 0.3s ease-in-out;
+        }
+
+        nav a:hover {
+            color: #8be7d9;
+        }
+
+        .btn-primary {
+            padding: 10px 20px;
+            background-color: #2a9d8f;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .btn-primary:hover {
+            background-color: #8be7d9;
+
+
+        .main-title {
+                text-align: center;
+                font-size: 36px;
+                font-style: italic;
+                color: #ffffff; /* You can adjust the color as needed */
+                margin-top: 30vh; /* Adjust the margin-top to center vertically */
+            }
+        }
+
+        .center-text h2 {
+            /* Styles for the 'Desivibe' text */
+            display :flex;
+            font-size: 6rem; /* Change the font size as needed */
+            font-style: italic;
+            font-family: Georgia;
+            justify-content: center;
+            align-items: center;
+            height: 75vh; /* Adjust the height of the container */
+            color: black ; /* You can adjust the color as needed */
+        }
+    </style>
+    </style>
+</head>
+
+<body>
+    <nav>
+        <h1 class="main-title"> Desivibe </h1>
+        <div>
+            {% if user.is_authenticated %}
+                Signed in as <strong>{{ user.username }}</strong>.
+            {% else %}
+                Not logged in.
+            {% endif %}
+        </div>
+        <div>
+            {% if user.is_authenticated %}
+                <a href="/rooms/">Rooms</a>
+                <a href="/logout/" class="btn-primary">Log out</a>
+            {% else %}
+                <a href="/login/">Log in</a>
+                <a href="/register/" class="btn-primary">Register</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <div class = "center-text" >
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>
